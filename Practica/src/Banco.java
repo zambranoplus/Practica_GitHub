@@ -33,7 +33,8 @@ public class Banco {               // Clase principal
             case 1: Cliente cliente1 = new Cliente();
                     cliente1.createCliente();
                     break;
-            case 2: System.out.println( "...En Construcción..." );
+            case 2: TipoCuenta cuenta = new TipoCuenta();
+                    cuenta.addTipoCuenta();
                     break;
             case 3: System.out.println( "...En Construcción..." );
                     break;

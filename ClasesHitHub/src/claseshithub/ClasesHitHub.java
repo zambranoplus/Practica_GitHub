@@ -29,6 +29,7 @@ public class ClasesHitHub {
         
         Cliente vectorClientes [] = new Cliente[100];
         CuentaBancaria cuentaBancarias[] = new CuentaBancaria[100];
+        OperacionBancaria vectorOperaciones[] = new OperacionBancaria[1000];
         //menu
         int op;
         do
@@ -96,6 +97,9 @@ public class ClasesHitHub {
                         System.out.print( "Numero Cuenta: " );
                         linea1 = lectura1.readLine();
                         cuentaBancarias[cantidadCuentasBancarias].setNumeroCuenta(linea1);
+                        System.out.print( "Cantidad de Dinero en la cuenta: " );
+                        linea1 = lectura1.readLine();
+                        cuentaBancarias[cantidadCuentasBancarias].setCantidadDinero(Integer.parseInt(linea1));
                         cantidadCuentasBancarias++;
                     }
                     else
@@ -103,7 +107,106 @@ public class ClasesHitHub {
                         System.out.print( "Cliente no existe" );
                     }
                         break;
-                case 3: System.out.println( "...En Construcción..." );
+                case 3: 
+                    vectorOperaciones[cantidadOperacionBancaria] = new OperacionBancaria();
+                    System.out.println( "...Realizar Operacion..." );
+                System.out.println( "Ingrese Tipo Operacion: " );
+                int operacion = 1;
+                do
+                {
+                    System.out.println("1.- deposito (500)");
+                    System.out.println("2.- retiro (200)");
+                    System.out.println("3.- retiro cajero (100)");
+                    texto = br.readLine();
+                    operacion = Integer.parseInt(texto);
+                }while((operacion < 1) && (operacion > 3));
+                System.out.println( "Ingrese Numero de Cuenta: " );
+                long numeroCuenta;
+                texto = br.readLine();
+                numeroCuenta = Integer.parseInt(texto);
+                //buscamos la cuenta y vemos donde se encuentra
+                int posCuentaBancaria = -1;
+                for(int i = 0; i< cantidadCuentasBancarias;i++)
+                {
+                    if(cuentaBancarias[i].getIdCuentaBancaria()== numeroCuenta)
+                    {
+                        posCuentaBancaria = i;
+                    }
+                
+                }
+                if(posCuentaBancaria != -1)
+                {
+                    if(operacion==1)
+                    {
+                        //metemos el deposito
+                        cuentaBancarias[posCuentaBancaria].setCantidadDinero(cuentaBancarias[posCuentaBancaria].getCantidadDinero()+500);
+                        TipoOperacion tipo = new TipoOperacion();
+                        tipo.setDescripcion("Deposito");
+                        tipo.setIdTipooperacion(1);
+                        vectorOperaciones[cantidadOperacionBancaria].setTipoOperacion(tipo);
+                        System.out.println( "Clave Operacion: " );
+                        texto = br.readLine();
+                        vectorOperaciones[cantidadOperacionBancaria].setClaveOperacion(texto);
+                        vectorOperaciones[cantidadOperacionBancaria].setCuentaBancaria(cuentaBancarias[posCuentaBancaria]);
+                        vectorOperaciones[cantidadOperacionBancaria].setIdOperacion(cantidadOperacionBancaria);
+                        cantidadOperacionBancaria++;
+                    
+                    }
+                    if(operacion == 2)
+                    {
+                        
+                        //realizamos le retiro
+                        if(cuentaBancarias[posCuentaBancaria].getCantidadDinero()>200)
+                        {
+                            cuentaBancarias[posCuentaBancaria].setCantidadDinero(cuentaBancarias[posCuentaBancaria].getCantidadDinero()-200);
+                            TipoOperacion tipo = new TipoOperacion();
+                            tipo.setDescripcion("Retiro");
+                            tipo.setIdTipooperacion(1);
+                            vectorOperaciones[cantidadOperacionBancaria].setTipoOperacion(tipo);
+                            System.out.println( "Clave Operacion: " );
+                            texto = br.readLine();
+                            vectorOperaciones[cantidadOperacionBancaria].setClaveOperacion(texto);
+                            vectorOperaciones[cantidadOperacionBancaria].setCuentaBancaria(cuentaBancarias[posCuentaBancaria]);
+                            vectorOperaciones[cantidadOperacionBancaria].setIdOperacion(cantidadOperacionBancaria);
+                            cantidadOperacionBancaria++;
+                        }
+                        else
+                        {
+                            System.out.println( "Operacion no realizada, falta Dinero " );
+                        }
+
+                    }
+                    
+                    if(operacion == 3)
+                    {
+                        //realizamos le retiro
+                        if(cuentaBancarias[posCuentaBancaria].getCantidadDinero()>100)
+                        {
+                            cuentaBancarias[posCuentaBancaria].setCantidadDinero(cuentaBancarias[posCuentaBancaria].getCantidadDinero()-100);
+                            TipoOperacion tipo = new TipoOperacion();
+                            tipo.setDescripcion("Retiro Cajero");
+                            tipo.setIdTipooperacion(1);
+                            vectorOperaciones[cantidadOperacionBancaria].setTipoOperacion(tipo);
+                            System.out.println( "Clave Operacion: " );
+                            texto = br.readLine();
+                            vectorOperaciones[cantidadOperacionBancaria].setClaveOperacion(texto);
+                            vectorOperaciones[cantidadOperacionBancaria].setCuentaBancaria(cuentaBancarias[posCuentaBancaria]);
+                            vectorOperaciones[cantidadOperacionBancaria].setIdOperacion(cantidadOperacionBancaria);
+                            cantidadOperacionBancaria++;
+                        }
+                        else
+                        {
+                            System.out.println( "Operacion no realizada, falta Dinero " );
+                        }
+                    }
+                    
+                }
+                else
+                {
+                    System.out.println( "Cuenta no existe, operacion no realizada " );
+                }
+                
+                
                         break;
                 case 4: System.out.println( "...En Construcción..." );
                         break;

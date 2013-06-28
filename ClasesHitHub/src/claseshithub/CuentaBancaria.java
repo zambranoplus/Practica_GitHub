@@ -15,6 +15,7 @@ public class CuentaBancaria {
     Date fechaApertura;
     long idCuentaBancaria;
     String numeroCuenta;
+    long cantidadDinero;
     
     TipoCuenta tipoCuenta;
     Cliente cliente;
@@ -52,6 +53,10 @@ public class CuentaBancaria {
         return tipoCuenta;
     }
 
+    public long getCantidadDinero() {
+        return cantidadDinero;
+    }
+
     public void setCliente(Cliente cliente) {
         this.cliente = cliente;
     }
@@ -70,6 +75,10 @@ public class CuentaBancaria {
 
     public void setTipoCuenta(TipoCuenta tipoCuenta) {
         this.tipoCuenta = tipoCuenta;
+    }
+
+    public void setCantidadDinero(long cantidadDinero) {
+        this.cantidadDinero = cantidadDinero;
     }
     
     

@@ -20,6 +20,8 @@ public class OperacionBancaria {
     CuentaBancaria cuentaBancaria;
 
     public OperacionBancaria() {
+        tipoOperacion = new TipoOperacion();
+        cuentaBancaria = new CuentaBancaria();
     }
 
     public String getClaveOperacion() {

@@ -36,7 +36,8 @@ public class Banco {               // Clase principal
             case 2: TipoCuenta cuenta = new TipoCuenta();
                     cuenta.addTipoCuenta();
                     break;
-            case 3: System.out.println( "...En Construcción..." );
+            case 3: CuentaBancaria bancaria = new CuentaBancaria ();
+                    bancaria.CuentaBancaria();
                     break;
             case 4: System.out.println( "...En Construcción..." );
                     break;

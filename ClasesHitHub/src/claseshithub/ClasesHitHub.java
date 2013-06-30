@@ -208,15 +208,82 @@ public class ClasesHitHub {
                 
                 
                         break;
-                case 4: System.out.println( "...En Construcción..." );
+                case 4: System.out.println( "Consultar Clientes" );
+                    System.out.println( "Ingrese Id del cliente: " );
+                    texto = br.readLine();
+                    int id = Integer.parseInt(texto);
+                    for(int i = 0;i<cantidadClientes;i++)
+                    {
+                        if(vectorClientes[i].getIdCliente() == id)
+                        {
+                            System.out.println( "Id del cliente: " + vectorClientes[i].getIdCliente());
+                            System.out.println( "Nombre del cliente: " + vectorClientes[i].getNombreCliente());
+                            
+                        }
+                    }
+                
                         break;
-                case 5: System.out.println( "...En Construcción..." );
+                case 5: System.out.println( "Consultar Cuenta Bancaria" );
+                    System.out.println( "Ingrese Id de la cuenta: " );
+                    texto = br.readLine();
+                    int idc = Integer.parseInt(texto);
+                    for(int i = 0 ; i< cantidadCuentasBancarias; i++)
+                    {
+                        if(cuentaBancarias[i].getIdCuentaBancaria() == idc)
+                        {
+                            System.out.println( "Id del cliente: " + cuentaBancarias[i].getCliente().getIdCliente());
+                            System.out.println( "Nombre del cliente: " + cuentaBancarias[i].getCliente().getNombreCliente());
+                            System.out.println( "Tipo cuenta: " + cuentaBancarias[i].getTipoCuenta().getDescripcion());
+                            System.out.println( "Id cuenta Bancaria: " + cuentaBancarias[i].getIdCuentaBancaria());
+                            System.out.println( "Numero Cuenta: " + cuentaBancarias[i].getNumeroCuenta());
+                            System.out.println( "Cantidad Dinero: " + cuentaBancarias[i].getCantidadDinero());
+                        }
+                    }
+                            
+                
                         break;
-                case 6: System.out.println( "...En Construcción..." );
+                case 6: System.out.println( "Listado de Clientes" );
+                    for(int i = 0;i<cantidadClientes;i++)
+                    {
+                            System.out.println( "Id del cliente: " + vectorClientes[i].getIdCliente());
+                            System.out.println( "Nombre del cliente: " + vectorClientes[i].getNombreCliente());
+                    }
                         break;
-                case 7: System.out.println( "...En Construcción..." );
+                case 7: System.out.println( "Listado de tipo de Operaciones" );
+                
+                //listados todos los depositos
+                System.out.println( "Depositos" );
+                for(int i = 0; i< cantidadOperacionBancaria;i++)
+                {
+                    if(vectorOperaciones[i].getTipoOperacion().getDescripcion()=="Deposito")
+                    {
+                        
+                    }
+                    
+                }
+                
+                //listamos todos los retiros
+                System.out.println( "Retiros" );
+                for(int i = 0; i< cantidadOperacionBancaria;i++)
+                {
+                    if(vectorOperaciones[i].getTipoOperacion().getDescripcion()=="Retiro")
+                    {
+                        
+                    }
+                }
+                
+                //listamos todos los retiros de cajeros
+                System.out.println( "Retiros Cajeros" );
+                for(int i = 0; i< cantidadOperacionBancaria;i++)
+                {
+                    if(vectorOperaciones[i].getTipoOperacion().getDescripcion()=="Retiro Cajero")
+                    {
+                        
+                    }
+                }
+                
                         break;
-                case 8: System.out.println( "...En Construccion..." );
+                case 8: System.out.println( "Listados de Tipos de Cuentas" );
                         break;
                 case 9: System.out.println( "...Fin de Sistema..." );
                         break;
